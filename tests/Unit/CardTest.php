@@ -14,10 +14,15 @@ class CardTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testChanceCalculator()
     {
         $result = CardGame::chanceOfgettingOneCard(50);
-        var_dump($result);
-        $this->assertTrue(true);
+        $this->assertEquals("2.00", $result);
+
+        $result = CardGame::chanceOfgettingOneCard(2);
+        $this->assertEquals("50.00", $result);
+
+        $result = CardGame::chanceOfgettingOneCard(10);
+        $this->assertEquals("10.00", $result);
     }
 }

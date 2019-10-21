@@ -110,23 +110,11 @@ class Analyser
 
     function getMaxDistance($sym)
     {
-        $size = 0;
-        $arr = str_split($this->inputString);
-        $b = 0;
-        $start = false;
-        for ($i = 0; $i < count($arr); $i ++) {
-            $curr = $arr[$i];
-            if ($curr == $sym && ! $start) {
-                $b ++;
-                $start = true;
-            } elseif ($curr == $sym) {
-                $size = $size > $b ? $size : $b;
-                $b = 0;
-            } elseif ($start) {
-                $b ++;
-            }
-        }
-        return $size;
+        $first = strpos($this->inputString, $sym);
+        $last = strrpos($this->inputString, $sym);
+        $dist = $last - $first;
+
+        return $dist > 0 ? $dist - 1 : 0 ;
     }
 
 }
